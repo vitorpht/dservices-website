@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { Container } from "@/components/ui/container";
 import { services } from "@/data/services";
 import { cn } from "@/lib/utils";
@@ -64,7 +64,7 @@ function ServicesShowcase() {
                   </ul>
 
                   <div className="mt-8">
-                    <PhoneCta
+                    <WhatsAppCta
                       location={`services_page_${service.id}`}
                       label={service.cta.label}
                       variant="outline"

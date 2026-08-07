@@ -33,8 +33,8 @@ export default function PrivacyPolicyPage() {
       <h2>1. Que dados recolhemos</h2>
       <p>
         Este website não recolhe dados através de formulários. Quando nos
-        contacta por telefone, podemos tratar os seguintes dados, quando nos
-        são fornecidos:
+        contacta por WhatsApp ou telefone, podemos tratar os seguintes dados,
+        quando nos são fornecidos:
       </p>
       <ul>
         <li>Nome e contacto telefónico</li>

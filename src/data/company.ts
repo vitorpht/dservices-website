@@ -18,12 +18,17 @@ export const company = {
     country: "Portugal",
   },
   /**
-   * Contacto principal — apenas telefone.
+   * Contacto principal — telefone / WhatsApp.
    * Pode ser sobrescrito por NEXT_PUBLIC_CONTACT_PHONE / NEXT_PUBLIC_CONTACT_PHONE_TEL
    */
   phone: {
     display: "927 512 571",
     tel: "+351927512571",
+  },
+  whatsapp: {
+    /** Mensagem pré-preenchida ao abrir o WhatsApp (orçamento) */
+    defaultMessage:
+      "Olá, D.Services Limpezas.\n\nEncontrei o vosso site e gostaria de solicitar um orçamento para um serviço de limpeza.\n\nAguardo o vosso contacto. Obrigado!",
   },
   developer: {
     name: "Victor Rodrigues",
@@ -59,5 +64,24 @@ export function getPhone() {
     display: display || telRaw,
     href: `tel:${tel}`,
     tel,
+  };
+}
+
+/** Link wa.me para pedidos de orçamento */
+export function getWhatsApp(message?: string) {
+  const phone = getPhone();
+  if (!phone) return null;
+
+  const digits = phone.tel.replace(/\D/g, "");
+  const text =
+    process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE?.trim() ||
+    message ||
+    company.whatsapp.defaultMessage;
+
+  return {
+    display: phone.display,
+    href: `https://wa.me/${digits}?text=${encodeURIComponent(text)}`,
+    digits,
+    message: text,
   };
 }

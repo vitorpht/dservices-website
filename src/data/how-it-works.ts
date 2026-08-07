@@ -13,7 +13,7 @@ export const howItWorksSteps: HowItWorksStep[] = [
     number: "01",
     title: "Contacte-nos",
     description:
-      "Ligue-nos por telefone. Atendimento direto e rápido para o seu pedido.",
+      "Envie-nos uma mensagem no WhatsApp. Atendimento direto e rápido para o seu pedido.",
     icon: howItWorksIcons.phone,
   },
   {

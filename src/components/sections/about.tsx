@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { Container } from "@/components/ui/container";
 import { aboutContent } from "@/data/about";
 import { cn } from "@/lib/utils";
@@ -68,7 +68,7 @@ function About({
 
             {showCta ? (
               <div className="mt-8">
-                <PhoneCta
+                <WhatsAppCta
                   location="about"
                   label="Pedir Orçamento"
                   variant="primary"

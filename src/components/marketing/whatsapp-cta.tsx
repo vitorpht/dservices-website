@@ -1,38 +1,38 @@
 "use client";
 
-import { Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 
 import { TrackedLink } from "@/components/marketing/tracked-link";
 import { buttonVariants } from "@/components/ui/button";
-import { getPhone } from "@/data/company";
+import { getWhatsApp } from "@/data/company";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
-type PhoneCtaProps = {
+type WhatsAppCtaProps = {
   location: string;
   label?: string;
+  message?: string;
   variant?: VariantProps<typeof buttonVariants>["variant"];
   size?: VariantProps<typeof buttonVariants>["size"];
   className?: string;
-  showNumber?: boolean;
   showIcon?: boolean;
   onClick?: () => void;
 };
 
-function PhoneCta({
+function WhatsAppCta({
   location,
-  label = "Ligar agora",
+  label = "Pedir Orçamento",
+  message,
   variant = "accent",
   size = "lg",
   className,
-  showNumber = false,
   showIcon = true,
   onClick,
-}: PhoneCtaProps) {
-  const phone = getPhone();
+}: WhatsAppCtaProps) {
+  const whatsapp = getWhatsApp(message);
 
-  if (!phone) {
+  if (!whatsapp) {
     return (
       <TrackedLink
         href="/contacto/"
@@ -41,34 +41,34 @@ function PhoneCta({
         onClick={onClick}
         className={cn(buttonVariants({ variant, size }), className)}
       >
-        {showIcon ? <Phone className="size-4" /> : null}
+        {showIcon ? <MessageCircle className="size-4" /> : null}
         {label}
       </TrackedLink>
     );
   }
 
-  const text = showNumber ? phone.display : label;
-
   return (
     <a
-      href={phone.href}
+      href={whatsapp.href}
+      target="_blank"
+      rel="noopener noreferrer"
       data-cta={location}
-      data-cta-label={text}
+      data-cta-label={label}
       className={cn(buttonVariants({ variant, size }), className)}
       onClick={() => {
-        trackEvent("phone_click", {
+        trackEvent("whatsapp_click", {
           location,
-          label: text,
-          phone: phone.display,
+          label,
+          phone: whatsapp.display,
         });
         onClick?.();
       }}
     >
-      {showIcon ? <Phone className="size-4" /> : null}
-      {text}
+      {showIcon ? <MessageCircle className="size-4" /> : null}
+      {label}
     </a>
   );
 }
 
-export { PhoneCta };
-export type { PhoneCtaProps };
+export { WhatsAppCta };
+export type { WhatsAppCtaProps };

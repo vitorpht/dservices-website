@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { Button } from "@/components/ui/button";
 import { Sheet } from "@/components/ui/sheet";
 import { mainNav } from "@/data/navigation";
@@ -74,7 +74,7 @@ function MobileNav() {
             </ul>
           </nav>
 
-          <PhoneCta
+          <WhatsAppCta
             location="mobile_nav"
             label="Pedir Orçamento"
             variant="primary"

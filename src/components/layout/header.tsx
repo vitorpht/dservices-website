@@ -1,6 +1,6 @@
 "use client";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { Container } from "@/components/ui/container";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,7 @@ function Header() {
         </div>
 
         <div className="flex shrink-0 items-center justify-end lg:justify-self-end">
-          <PhoneCta
+          <WhatsAppCta
             location="header"
             label="Pedir Orçamento"
             variant="primary"

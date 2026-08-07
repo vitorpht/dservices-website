@@ -1,22 +1,23 @@
-import { company, getFullAddress, getPhone } from "@/data/company";
+import { company, getFullAddress, getPhone, getWhatsApp } from "@/data/company";
 
 export const contactPage = {
   title: "Contacto",
   eyebrow: "Contacto direto",
-  headline: "Fale connosco por telefone",
+  headline: "Fale connosco por WhatsApp",
   description:
-    "Na D.Services Limpezas o contacto é simples e direto: ligue-nos para informações, esclarecimentos ou pedidos de orçamento na Figueira da Foz e arredores.",
+    "Na D.Services Limpezas o contacto é simples e direto: envie-nos uma mensagem no WhatsApp para informações, esclarecimentos ou pedidos de orçamento na Figueira da Foz e arredores.",
   seoDescription:
-    "Contacto telefónico D.Services Limpezas na Figueira da Foz. Ligue para pedir orçamento de limpeza residencial, escritórios, condomínios e pós-obra.",
+    "Contacto WhatsApp D.Services Limpezas na Figueira da Foz. Peça orçamento de limpeza residencial, escritórios, condomínios e pós-obra.",
   trust: [
-    { value: "Telefone", label: "Único canal de contacto" },
+    { value: "WhatsApp", label: "Orçamentos e contacto" },
     { value: "Desde 2008", label: "Experiência no setor" },
     { value: "Figueira da Foz", label: "Atuação local" },
   ],
   steps: [
     {
-      title: "Ligue-nos",
-      description: "Fale diretamente com a nossa equipa e explique o que precisa.",
+      title: "Envie mensagem",
+      description:
+        "Abra o WhatsApp e diga-nos o que precisa — respondemos com rapidez.",
     },
     {
       title: "Esclareça o serviço",
@@ -40,9 +41,11 @@ export const contactPage = {
 
 export function getContactInfo() {
   const phone = getPhone();
+  const whatsapp = getWhatsApp();
 
   return {
     phone,
+    whatsapp,
     address: {
       label: "Morada",
       value: getFullAddress(),

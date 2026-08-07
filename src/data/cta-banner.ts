@@ -5,7 +5,7 @@ import { ctaNav } from "./navigation";
 export const homeCtaBanner: CtaBannerContent = {
   title: "Pronto para um espaço impecável?",
   description:
-    "Ligue-nos para um orçamento sem compromisso e descubra como a D.Services pode elevar o padrão de limpeza do seu escritório ou residência.",
+    "Peça um orçamento sem compromisso por WhatsApp e descubra como a D.Services pode elevar o padrão de limpeza do seu escritório ou residência.",
   cta: {
     label: ctaNav.label,
     href: ctaNav.href,

@@ -1,4 +1,4 @@
-import { getPhone } from "@/data/company";
+import { getWhatsApp } from "@/data/company";
 
 export type NavItem = {
   label: string;
@@ -12,18 +12,17 @@ export const mainNav: NavItem[] = [
   { label: "Contacto", href: "/contacto/" },
 ];
 
-/** CTA principal — liga por telefone quando o número está definido */
+/** CTA principal — abre WhatsApp com mensagem de orçamento */
 export function getQuoteCta() {
-  const phone = getPhone();
+  const whatsapp = getWhatsApp();
 
   return {
     label: "Pedir Orçamento",
-    href: phone?.href ?? "/contacto/",
-    isPhone: Boolean(phone),
+    href: whatsapp?.href ?? "/contacto/",
+    isWhatsApp: Boolean(whatsapp),
   } as const;
 }
 
-/** Compatibilidade com imports estáticos (href aponta para contacto se sem telefone) */
 export const ctaNav = {
   label: "Pedir Orçamento",
   get href() {

@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import Image from "next/image";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { cn } from "@/lib/utils";
 import type { ServiceCardImagePosition, ServiceItem } from "@/types/service";
 
@@ -51,7 +51,7 @@ function ServiceCard({
         </ul>
 
         <div className="mt-6 sm:mt-8">
-          <PhoneCta
+          <WhatsAppCta
             location={`service_card_${id}`}
             label={cta.label}
             variant="primary"

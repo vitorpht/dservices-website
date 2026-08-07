@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, MapPin, Phone } from "lucide-react";
+import { Building2, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { ContactChannelLink } from "@/components/marketing/contact-channel-link";
 import { getContactInfo } from "@/data/contact";
@@ -10,6 +10,17 @@ function ContactChannels() {
 
   return (
     <div className="space-y-3">
+      {info.whatsapp ? (
+        <ContactChannelLink
+          href={info.whatsapp.href}
+          label="WhatsApp"
+          value={info.whatsapp.display}
+          icon={MessageCircle}
+          eventName="whatsapp_click"
+          external
+        />
+      ) : null}
+
       {info.phone ? (
         <ContactChannelLink
           href={info.phone.href}

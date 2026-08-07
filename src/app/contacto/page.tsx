@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { ContactChannels } from "@/components/sections/contact-channels";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
-import { getPhone } from "@/data/company";
+import { getPhone, getWhatsApp } from "@/data/company";
 import { contactPage } from "@/data/contact";
 import {
   breadcrumbJsonLd,
@@ -21,6 +21,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default function ContactPage() {
   const phone = getPhone();
+  const whatsapp = getWhatsApp();
 
   return (
     <main className="flex flex-1 flex-col">
@@ -48,25 +49,26 @@ export default function ContactPage() {
               {contactPage.description}
             </p>
 
-            {phone ? (
+            {whatsapp ? (
               <a
-                href={phone.href}
+                href={whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center justify-center gap-3 text-balance font-semibold tracking-tight text-primary-foreground transition-opacity hover:opacity-90"
                 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
               >
-                <Phone className="size-8 shrink-0 sm:size-10" aria-hidden />
-                <span>{phone.display}</span>
+                <MessageCircle className="size-8 shrink-0 sm:size-10" aria-hidden />
+                <span>{whatsapp.display}</span>
               </a>
             ) : null}
 
             <div className="mt-8 flex justify-center">
-              <PhoneCta
+              <WhatsAppCta
                 location="contact_hero"
-                label="Ligar agora"
+                label="Pedir Orçamento"
                 variant="accent"
                 size="lg"
                 className="w-full sm:w-auto"
-                showNumber={Boolean(phone)}
               />
             </div>
           </div>
@@ -91,8 +93,9 @@ export default function ContactPage() {
             <div>
               <h2 className="typo-h3 text-primary">Como pedimos orçamento</h2>
               <p className="mt-2 typo-body text-muted">
-                Sem formulários — basta uma chamada. Atendimento direto para
-                particulares e empresas na Figueira da Foz e arredores.
+                Sem formulários — envie uma mensagem no WhatsApp. Atendimento
+                direto para particulares e empresas na Figueira da Foz e
+                arredores.
               </p>
 
               <ol className="mt-8 space-y-5">
@@ -114,7 +117,7 @@ export default function ContactPage() {
               </ol>
 
               <div className="mt-8">
-                <PhoneCta
+                <WhatsAppCta
                   location="contact_steps"
                   label="Pedir Orçamento"
                   variant="primary"
@@ -127,8 +130,8 @@ export default function ContactPage() {
             <aside>
               <h2 className="typo-h3 text-primary">Dados de contacto</h2>
               <p className="mt-2 typo-body text-muted">
-                Contacte-nos por telefone. A morada e identificação da empresa
-                estão disponíveis abaixo.
+                Preferimos WhatsApp para orçamentos. Também pode ligar ou ver a
+                morada da empresa abaixo.
               </p>
               <div className="mt-6">
                 <ContactChannels />

@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import type { HeroContent } from "@/types/hero";
@@ -83,7 +83,7 @@ function Hero({ content, className }: HeroProps) {
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-6 sm:mt-8 lg:mt-10">
-            <PhoneCta
+            <WhatsAppCta
               location="hero"
               label={cta.label}
               variant="accent"

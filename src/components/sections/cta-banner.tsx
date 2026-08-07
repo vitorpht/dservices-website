@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { PhoneCta } from "@/components/marketing/phone-cta";
+import { WhatsAppCta } from "@/components/marketing/whatsapp-cta";
 import { Container } from "@/components/ui/container";
 import { homeCtaBanner } from "@/data/cta-banner";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,7 @@ function CtaBanner({ content = homeCtaBanner, className }: CtaBannerProps) {
             </p>
 
             <div className="mt-6 sm:mt-8">
-              <PhoneCta
+              <WhatsAppCta
                 location="cta_banner"
                 label={cta.label}
                 variant="accent"
