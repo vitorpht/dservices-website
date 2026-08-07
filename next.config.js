@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export — Hostinger serve a pasta `out/`
-  output: "export",
+  // Modo Next.js padrão (SSR/SSG) — Hostinger Node.js usa a pasta `.next`
+  // e corre `next start`. Não usar `output: "export"` neste hosting.
   images: {
     unoptimized: true,
   },
