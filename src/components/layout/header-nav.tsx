@@ -11,7 +11,7 @@ function HeaderNav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Navegação principal" className="hidden lg:block">
+    <nav aria-label="Navegação principal">
       <ul className="flex items-center gap-8">
         {mainNav.map((item) => {
           const isActive =

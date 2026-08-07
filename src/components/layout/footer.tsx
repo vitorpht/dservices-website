@@ -19,15 +19,15 @@ function Footer({ className }: FooterProps) {
       className={cn("mt-auto border-t border-border/70 bg-surface", className)}
     >
       <Container className="py-10 sm:py-12">
-        <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
-          <div className="max-w-md">
+        <div className="flex flex-col items-center justify-between gap-8 text-center sm:flex-row sm:items-center sm:text-left">
+          <div className="flex max-w-md flex-col items-center sm:items-start">
             <Logo className="[&_img]:h-10 [&_img]:max-w-[11rem] sm:[&_img]:h-12 sm:[&_img]:max-w-[13rem] lg:[&_img]:h-12 lg:[&_img]:max-w-[13rem]" />
             <p className="mt-3 typo-body-sm text-muted">{company.activity}</p>
             <p className="mt-1.5 typo-body-sm text-muted">{getFullAddress()}</p>
           </div>
 
           <nav aria-label="Informação legal">
-            <ul className="flex flex-col gap-2 sm:items-end">
+            <ul className="flex flex-col items-center gap-2 sm:items-end">
               {legalNav.map((item) => (
                 <li key={item.href}>
                   {item.external ? (
@@ -53,7 +53,7 @@ function Footer({ className }: FooterProps) {
           </nav>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-border/70 pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <div className="mt-8 flex flex-col items-center gap-2 border-t border-border/70 pt-6 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-left">
           <p className="typo-body-sm text-muted">
             © {currentYear} {company.legalName}. Todos os direitos reservados.
           </p>

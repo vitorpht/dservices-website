@@ -15,7 +15,7 @@ function Logo({ className, onNavigate }: LogoProps) {
       aria-label="D.Services — Página inicial"
       onClick={onNavigate}
       className={cn(
-        "inline-flex shrink-0 items-center transition-opacity hover:opacity-80",
+        "inline-flex shrink-0 items-center leading-none transition-opacity hover:opacity-80",
         className,
       )}
     >
@@ -25,7 +25,7 @@ function Logo({ className, onNavigate }: LogoProps) {
         width={340}
         height={121}
         priority
-        className="h-11 w-auto max-w-[11.5rem] object-contain object-left sm:h-14 sm:max-w-[15rem] lg:h-20 lg:max-w-[23rem]"
+        className="block h-12 w-auto max-w-[14rem] object-contain object-left sm:h-14 sm:max-w-[15rem] lg:h-20 lg:max-w-[23rem]"
         style={{ width: "auto" }}
       />
     </Link>

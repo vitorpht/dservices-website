@@ -19,16 +19,21 @@ function Header() {
         scrolled && "border-border/60 shadow-sm",
       )}
     >
-      <Container className="grid h-16 grid-cols-[1fr_auto] items-center sm:h-20 lg:h-28 lg:grid-cols-[1fr_auto_1fr]">
-        <div className="justify-self-start">
+      <Container
+        className={cn(
+          "flex h-16 items-center justify-between gap-3 sm:h-20",
+          "lg:grid lg:h-28 lg:grid-cols-[1fr_auto_1fr] lg:gap-0",
+        )}
+      >
+        <div className="flex min-w-0 shrink items-center lg:justify-self-start">
           <Logo />
         </div>
 
-        <div className="justify-self-center">
+        <div className="hidden items-center lg:flex lg:justify-self-center">
           <HeaderNav />
         </div>
 
-        <div className="flex items-center justify-self-end gap-2">
+        <div className="flex shrink-0 items-center justify-end lg:justify-self-end">
           <PhoneCta
             location="header"
             label="Pedir Orçamento"

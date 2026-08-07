@@ -20,7 +20,7 @@ function MobileNav() {
   const close = () => setOpen(false);
 
   return (
-    <div className="lg:hidden">
+    <div className="flex items-center lg:hidden">
       <Button
         type="button"
         variant="ghost"
@@ -29,6 +29,7 @@ function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-navigation"
         onClick={() => setOpen(true)}
+        className="size-11 shrink-0"
       >
         <Menu className="size-5" />
       </Button>
@@ -41,7 +42,9 @@ function MobileNav() {
         className="border-border"
       >
         <div id="mobile-navigation" className="flex h-full flex-col">
-          <Logo onNavigate={close} className="mb-8" />
+          <div className="mb-8 flex justify-center">
+            <Logo onNavigate={close} />
+          </div>
 
           <nav aria-label="Navegação mobile" className="flex flex-1 flex-col">
             <ul className="flex flex-col gap-1">
