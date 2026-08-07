@@ -1,0 +1,106 @@
+/*
+ * Design System — utilitários compostos (mobile-first)
+ */
+
+@utility brand-glow {
+  background-image:
+    radial-gradient(
+      circle at top right,
+      color-mix(in srgb, var(--color-accent) 28%, transparent),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      color-mix(in srgb, var(--color-secondary) 18%, transparent),
+      transparent 40%
+    );
+}
+
+@utility section-padding {
+  padding-block: 3.5rem;
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-section);
+  }
+
+  @media (min-width: 1024px) {
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
+@utility section-padding-sm {
+  padding-block: var(--spacing-section-xs);
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-section-sm);
+  }
+}
+
+@utility section-padding-lg {
+  padding-block: var(--spacing-section);
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
+@utility typo-display {
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: var(--text-display--letter-spacing);
+  font-weight: var(--text-display--font-weight);
+}
+
+@utility typo-h1 {
+  font-size: var(--text-h1);
+  line-height: var(--text-h1--line-height);
+  letter-spacing: var(--text-h1--letter-spacing);
+  font-weight: var(--text-h1--font-weight);
+}
+
+@utility typo-h2 {
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: var(--text-h2--letter-spacing);
+  font-weight: var(--text-h2--font-weight);
+}
+
+@utility typo-h3 {
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  letter-spacing: var(--text-h3--letter-spacing);
+  font-weight: var(--text-h3--font-weight);
+}
+
+@utility typo-h4 {
+  font-size: var(--text-h4);
+  line-height: var(--text-h4--line-height);
+  letter-spacing: var(--text-h4--letter-spacing);
+  font-weight: var(--text-h4--font-weight);
+}
+
+@utility typo-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  font-weight: 400;
+}
+
+@utility typo-body {
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  font-weight: 400;
+}
+
+@utility typo-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm--line-height);
+  font-weight: 400;
+}
+
+@utility typo-caption {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  letter-spacing: var(--text-caption--letter-spacing);
+  font-weight: 500;
+  text-transform: uppercase;
+}

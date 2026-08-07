@@ -1,0 +1,18 @@
+---
+description: Mobile-first é a prioridade de desenvolvimento deste site
+alwaysApply: true
+---
+
+# Mobile-first
+
+Este projeto é desenvolvido com prioridade **mobile-first**.
+
+## Regras
+
+- Escrever estilos base para mobile; escalar com `sm:`, `md:`, `lg:`
+- Evitar breakpoints `max-*` salvo exceções pontuais
+- Tipografia e espaçamentos devem ser confortáveis em 375px
+- CTAs principais: `w-full` no mobile, `sm:w-auto` no desktop
+- Touch targets mínimos ~44px
+- Testar visualmente em ~375px e ~390px antes de considerar uma secção concluída
+- Manter o logo grande no desktop (`lg:`); no mobile usar escala reduzida
