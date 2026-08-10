@@ -3,9 +3,10 @@
 import { MessageCircle } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 
+import { useContactMethodChooser } from "@/components/marketing/contact-method-chooser";
 import { TrackedLink } from "@/components/marketing/tracked-link";
 import { buttonVariants } from "@/components/ui/button";
-import { getWhatsApp } from "@/data/company";
+import { getPhone, getWhatsApp } from "@/data/company";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
@@ -30,16 +31,19 @@ function WhatsAppCta({
   showIcon = true,
   onClick,
 }: WhatsAppCtaProps) {
+  const { openContactMethods } = useContactMethodChooser();
+  const phone = getPhone();
   const whatsapp = getWhatsApp(message);
+  const classes = cn(buttonVariants({ variant, size }), className);
 
-  if (!whatsapp) {
+  if (!phone || !whatsapp) {
     return (
       <TrackedLink
         href="/contacto/"
         eventLocation={location}
         eventLabel={label}
         onClick={onClick}
-        className={cn(buttonVariants({ variant, size }), className)}
+        className={classes}
       >
         {showIcon ? <MessageCircle className="size-4" /> : null}
         {label}
@@ -48,25 +52,43 @@ function WhatsAppCta({
   }
 
   return (
-    <a
-      href={whatsapp.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-cta={location}
-      data-cta-label={label}
-      className={cn(buttonVariants({ variant, size }), className)}
-      onClick={() => {
-        trackEvent("whatsapp_click", {
-          location,
-          label,
-          phone: whatsapp.display,
-        });
-        onClick?.();
-      }}
-    >
-      {showIcon ? <MessageCircle className="size-4" /> : null}
-      {label}
-    </a>
+    <>
+      {/* Desktop: WhatsApp direto */}
+      <a
+        href={whatsapp.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta={location}
+        data-cta-label={label}
+        className={cn(classes, "hidden lg:inline-flex")}
+        onClick={() => {
+          trackEvent("whatsapp_click", {
+            location,
+            label,
+            phone: whatsapp.display,
+          });
+          onClick?.();
+        }}
+      >
+        {showIcon ? <MessageCircle className="size-4" /> : null}
+        {label}
+      </a>
+
+      {/* Mobile: escolher ligação ou WhatsApp */}
+      <button
+        type="button"
+        data-cta={location}
+        data-cta-label={label}
+        className={cn(classes, "lg:hidden")}
+        onClick={() => {
+          openContactMethods({ location, label, message });
+          onClick?.();
+        }}
+      >
+        {showIcon ? <MessageCircle className="size-4" /> : null}
+        {label}
+      </button>
+    </>
   );
 }
 
