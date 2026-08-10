@@ -2,6 +2,7 @@
 
 import { MessageCircle } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
+import type { MouseEvent } from "react";
 
 import { useContactMethodChooser } from "@/components/marketing/contact-method-chooser";
 import { TrackedLink } from "@/components/marketing/tracked-link";
@@ -9,6 +10,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { getPhone, getWhatsApp } from "@/data/company";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+
+/** Alinhado com o breakpoint `lg` do Tailwind (1024px). */
+const MOBILE_CONTACT_QUERY = "(max-width: 1023px)";
 
 type WhatsAppCtaProps = {
   location: string;
@@ -20,6 +24,10 @@ type WhatsAppCtaProps = {
   showIcon?: boolean;
   onClick?: () => void;
 };
+
+function isMobileViewport() {
+  return window.matchMedia(MOBILE_CONTACT_QUERY).matches;
+}
 
 function WhatsAppCta({
   location,
@@ -34,7 +42,6 @@ function WhatsAppCta({
   const { openContactMethods } = useContactMethodChooser();
   const phone = getPhone();
   const whatsapp = getWhatsApp(message);
-  const classes = cn(buttonVariants({ variant, size }), className);
 
   if (!phone || !whatsapp) {
     return (
@@ -43,7 +50,7 @@ function WhatsAppCta({
         eventLocation={location}
         eventLabel={label}
         onClick={onClick}
-        className={classes}
+        className={cn(buttonVariants({ variant, size }), className)}
       >
         {showIcon ? <MessageCircle className="size-4" /> : null}
         {label}
@@ -51,44 +58,35 @@ function WhatsAppCta({
     );
   }
 
-  return (
-    <>
-      {/* Desktop: WhatsApp direto */}
-      <a
-        href={whatsapp.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-cta={location}
-        data-cta-label={label}
-        className={cn(classes, "hidden lg:inline-flex")}
-        onClick={() => {
-          trackEvent("whatsapp_click", {
-            location,
-            label,
-            phone: whatsapp.display,
-          });
-          onClick?.();
-        }}
-      >
-        {showIcon ? <MessageCircle className="size-4" /> : null}
-        {label}
-      </a>
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (isMobileViewport()) {
+      event.preventDefault();
+      openContactMethods({ location, label, message });
+      onClick?.();
+      return;
+    }
 
-      {/* Mobile: escolher ligação ou WhatsApp */}
-      <button
-        type="button"
-        data-cta={location}
-        data-cta-label={label}
-        className={cn(classes, "lg:hidden")}
-        onClick={() => {
-          openContactMethods({ location, label, message });
-          onClick?.();
-        }}
-      >
-        {showIcon ? <MessageCircle className="size-4" /> : null}
-        {label}
-      </button>
-    </>
+    trackEvent("whatsapp_click", {
+      location,
+      label,
+      phone: whatsapp.display,
+    });
+    onClick?.();
+  };
+
+  return (
+    <a
+      href={whatsapp.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-cta={location}
+      data-cta-label={label}
+      className={cn(buttonVariants({ variant, size }), className)}
+      onClick={handleClick}
+    >
+      {showIcon ? <MessageCircle className="size-4" /> : null}
+      {label}
+    </a>
   );
 }
 
