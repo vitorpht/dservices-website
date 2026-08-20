@@ -11,10 +11,7 @@ export const siteConfig = {
   shortName: "D.Services",
   description:
     "Empresa de limpeza profissional na Figueira da Foz. Limpeza de escritórios, residências, pós-obra e manutenção contínua — com qualidade, confiança e pontualidade.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dserviceslimpezas.pt").replace(
-    /\/$/,
-    "",
-  ),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dservices.pt").replace(/\/$/, ""),
   locale: "pt_PT",
   language: "pt",
   keywords: [
@@ -32,6 +29,8 @@ export const siteConfig = {
     "serviços de limpeza Portugal",
   ],
   ogImage: "/images/og.jpg",
+  /** Ícone quadrado da marca — usado em Schema.org e manifest */
+  brandLogo: "/images/brand/icon-512.png",
   themeColor: colors.primary,
   address: company.address,
   fullAddress: getFullAddress(),
@@ -42,7 +41,6 @@ export const siteConfig = {
     latitude: 40.150593,
     longitude: -8.861856,
   },
-  sameAs: [] as string[],
 } as const;
 
 export function absoluteUrl(path = "/") {

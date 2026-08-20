@@ -5,6 +5,8 @@ import { getPhone } from "@/data/company";
 
 type BuildMetadataOptions = {
   title?: string;
+  /** Título completo — ignora o template do layout (ex.: homepage) */
+  absoluteTitle?: string;
   description?: string;
   path?: string;
   image?: string;
@@ -13,6 +15,7 @@ type BuildMetadataOptions = {
 
 export function buildMetadata({
   title,
+  absoluteTitle,
   description = siteConfig.description,
   path = "/",
   image = siteConfig.ogImage,
@@ -20,9 +23,10 @@ export function buildMetadata({
 }: BuildMetadataOptions = {}): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image.startsWith("http") ? image : absoluteUrl(image);
+  const ogTitle = absoluteTitle ?? (title ? `${title} | ${siteConfig.name}` : siteConfig.name);
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: absoluteTitle } : title,
     description,
     keywords: [...siteConfig.keywords],
     authors: [{ name: siteConfig.legalName }],
@@ -40,7 +44,7 @@ export function buildMetadata({
       locale: siteConfig.locale,
       url,
       siteName: siteConfig.name,
-      title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
+      title: ogTitle,
       description,
       images: [
         {
@@ -53,7 +57,7 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
+      title: ogTitle,
       description,
       images: [ogImage],
     },
@@ -85,7 +89,7 @@ export function localBusinessJsonLd() {
     description: siteConfig.description,
     url: siteConfig.url,
     image: absoluteUrl(siteConfig.ogImage),
-    logo: absoluteUrl("/images/brand/logo_horizontal.svg"),
+    logo: absoluteUrl(siteConfig.brandLogo),
     taxID: siteConfig.nif,
     foundingDate: String(siteConfig.foundedYear),
     ...(phone
@@ -132,7 +136,6 @@ export function localBusinessJsonLd() {
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Credit Card, Bank Transfer",
-    sameAs: siteConfig.sameAs,
   };
 }
 
@@ -158,7 +161,7 @@ export function organizationJsonLd() {
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.legalName,
     url: siteConfig.url,
-    logo: absoluteUrl("/images/brand/logo_horizontal.svg"),
+    logo: absoluteUrl(siteConfig.brandLogo),
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.street,

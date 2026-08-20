@@ -14,7 +14,7 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contacto | Limpeza na Figueira da Foz",
+  title: "Contacto",
   description: contactPage.seoDescription,
   path: "/contacto/",
 });

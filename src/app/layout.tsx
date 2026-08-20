@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Limpeza Profissional na Figueira da Foz`,
+    default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Limpeza Profissional na Figueira da Foz`,
+    title: siteConfig.name,
     description: siteConfig.description,
     images: [
       {
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Limpeza Profissional na Figueira da Foz`,
+    title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },

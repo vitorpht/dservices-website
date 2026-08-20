@@ -15,7 +15,7 @@ import { services } from "@/data/services";
 import { buildMetadata, faqJsonLd, servicesJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Limpeza Profissional na Figueira da Foz",
+  absoluteTitle: "D.Services Limpezas | Limpeza Profissional na Figueira da Foz",
   description:
     "D.Services Limpezas — limpeza de escritórios, residências, pós-obra e manutenção na Figueira da Foz. Qualidade, confiança e pontualidade desde 2008.",
   path: "/",
